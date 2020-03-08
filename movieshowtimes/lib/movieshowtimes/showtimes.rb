@@ -1,0 +1,2 @@
+class Movieshowtimes::Showtimes
+  attr_accessor :tmsId, :rootId, :subType, :title, :releaseYear, :releaseDate, :title, :genres, :audience, :longDescription, :topCast, :directors, :officialUrl, :ratings, :showtimes
