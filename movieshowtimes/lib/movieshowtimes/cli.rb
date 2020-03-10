@@ -17,5 +17,16 @@ class Movieshowtimes::CLI
     Movieshowtimes::Showtimes.display_movie_listing
   end
   
+  def display_movie_showtimes
+    
+    puts  "   d8b"                                      
+    puts  "   Y8P"                                      
+    puts  "                                         "                                             
+    puts  " .d8888b88888888b.  .d88b. 88888b.d88b.  8888b."
+    puts  " d88P   888888 88bd8P  Y8b888 888  '88b     88b"
+    puts  " 888    888888 88888888888888 888   888.d888888" 
+    puts  "Y88b.   888888 888Y8b.    888 888   8888888 888" 
+          "Y8888P888888  888 "Y8888  888 888  888"Y888888 
+  
   
 end
