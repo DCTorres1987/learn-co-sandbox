@@ -14,12 +14,20 @@ class Movieshowtimes::Showtimes
 
   def self.display_movie_listing
       self.all.each do |movie|
-      puts "Movie: #{movie["title"]}"
-      puts "Genres:  #{movie["genres"]}"
-      puts "Description: #{movie["longDescription"]}"
+      puts "****************************************"
+      puts "*******************************"
+      puts "***********************"
+      puts "Movie: #{movie.title}"
+      puts "Genres:  #{movie.genres}"
+      puts "Description: #{movie.longDescription}"
       puts "****************************************"
       puts "Showtimes: "
-      puts "           Theater: #{movie["showtimes"][0]["theatre"]["name"]}"
+      movie.showtimes.each do |s|
+        puts s["theatre"]["name"]
+        puts s["dateTime"] 
+        puts s["ticketURI"]
+      end 
+      # puts "           Theater: #{movie.showtimes[0].theatre["name"]}"
       
       #Start by writing out what you want it to look like in plain English
       # Movie: Movie titlev <--- attribute that you need to access
