@@ -3,6 +3,7 @@ class Movieshowtimes::CLI
       welcome
       showtimes_search
       display_movie_showtimes
+      display_theater_listing
       another_search
   end
   
@@ -38,7 +39,11 @@ class Movieshowtimes::CLI
     puts "*****************************"
     puts "***********"
    
-    Movieshowtimes::Showtimes.display_movie_listing
+    puts "Please choose a theater"
+    Movieshowtimes::Showtimes.display_theater_listing
+    theater = gets.chomp
+    
+    Movieshowtimes::Showtimes.display_theater_listing
   end
   
   def another_search

@@ -11,7 +11,17 @@ class Movieshowtimes::Showtimes
   def self.all
     @@all
   end
-
+  
+  def self.display_theater_listing
+        self.all.each do |movie|
+        movie.showtimes.each do |s|
+        puts "                      "
+        puts s["theatre"]["name"].colorize(:yellow)
+        puts "______________________"
+        end 
+  end 
+  
+  
   def self.display_movie_listing
       self.all.each do |movie|
       puts "                        "
@@ -21,10 +31,7 @@ class Movieshowtimes::Showtimes
       puts "Description: #{movie.longDescription}"
       puts "****************************************".colorize(:red)
       puts "Showtimes: "
-      movie.showtimes.each do |s|
-        puts "                      "
-        puts s["theatre"]["name"].colorize(:yellow)
-        puts "______________________"
+      movie.showtimes.each do |s|  
         puts s["dateTime"].split("T")
         puts "                      "
         puts "Please click here to purchase your ticket."
