@@ -6,24 +6,30 @@ class Movieshowtimes::Showtimes
   def initialize(hash)
     hash.each {|k, v| self.send("#{k}=", v)}
     @@all << self
-    binding.pry
   end
   
   def self.all
     @@all
   end
 
-# def display_movie_listing
-#   self.all.select {|theater| binding.pry}
-  
-# end  
-  # def display_movie_listing
-  #   # @@all.showtimes.each do |movie|
-  #   #   # puts "Movie: #{movie.}"
-  #   #   #puts interpolate movies showing
-  #   # end
-  #   binding.pry
-  # end
+  def self.display_movie_listing
+      self.all.each do |movie|
+      puts "Movie: #{movie["title"]}"
+      puts "Genres:  #{movie["genres"]}"
+      puts "Description: #{movie["longDescription"]}"
+      puts "****************************************"
+      puts "Showtimes: "
+      puts "           Theater: #{movie["showtimes"][0]["theatre"]["name"]}"
+      
+      #Start by writing out what you want it to look like in plain English
+      # Movie: Movie titlev <--- attribute that you need to access
+      # Genre: Romantic Comedy
+      #Showing At:
+      #Interpolate theaters and showtimes
+      # puts "Movie: #{movie.}"
+      #puts interpolate movies showing
+    end
+  end
 
   def self.destroy_all
     @@all.clear
