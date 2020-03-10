@@ -4,6 +4,7 @@ require_relative "./movieshowtimes/cli"
 require_relative "./movieshowtimes/api"
 require "pry"
 require 'httparty'
+require 'colorize'
 
 module Movieshowtimes
   class Error < StandardError; end

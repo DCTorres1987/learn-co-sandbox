@@ -24,18 +24,15 @@ class Movieshowtimes::Showtimes
       puts "Showtimes: "
       movie.showtimes.each do |s|
         puts s["theatre"]["name"]
-        puts s["dateTime"] 
+        puts s["dateTime"]
         puts s["ticketURI"]
+        binding.pry
       end 
-      # puts "           Theater: #{movie.showtimes[0].theatre["name"]}"
-      
       #Start by writing out what you want it to look like in plain English
       # Movie: Movie titlev <--- attribute that you need to access
       # Genre: Romantic Comedy
       #Showing At:
       #Interpolate theaters and showtimes
-      # puts "Movie: #{movie.}"
-      #puts interpolate movies showing
     end
   end
 

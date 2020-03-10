@@ -3,6 +3,7 @@ class Movieshowtimes::CLI
       welcome
       showtimes_search
       display_movie_showtimes
+      another_search
   end
   
   def welcome 
@@ -30,5 +31,29 @@ class Movieshowtimes::CLI
     puts  "  Y8888P888888 888  'Y8888 888 888  888'Y888888" 
     puts  "***************************************************"
     Movieshowtimes::Showtimes.display_movie_listing
+  end
+  
+  def another_search
+    puts "Would you like to search another location for showtimes?"
+    puts "Please input 'yes' or 'no'."
+    choice = gets.chomp
+    
+      if choice == "yes"
+        
+        puts "Please enter a 5-digit zipcode."
+        zip = gets.chomp
+        puts "Please enter showtime date (yyyy-mm-dd)"
+        date = gets.chomp
+        Movieshowtimes::API.new.fetch(zip, date)
+      elsif choice == "no"
+        goodbye
+      else
+        puts "I'm sorry, that is not a valid choice."
+      end
+  end
+    
+  def goodbye 
+    Movieshowtimes::Showtimes.destroy_all
+    puts "Goodbye, and thanks for using our service!"
   end
 end
