@@ -24,9 +24,8 @@ class Movieshowtimes::Showtimes
       puts "Showtimes: "
       movie.showtimes.each do |s|
         puts s["theatre"]["name"]
-        puts s["dateTime"]
+        puts s["dateTime"].split("T")
         puts s["ticketURI"]
-        binding.pry
       end 
       #Start by writing out what you want it to look like in plain English
       # Movie: Movie titlev <--- attribute that you need to access
