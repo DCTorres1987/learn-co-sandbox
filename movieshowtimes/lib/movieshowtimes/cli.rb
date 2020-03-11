@@ -7,16 +7,6 @@ class Movieshowtimes::CLI
       # another_search
   end
   
-  def display_theatre
-    new_array = []
-    Movieshowtimes::Showtimes.all.each do |h|
-        h.showtimes.map.with_index(1) do |t, index| 
-          new_array << t["theatre"]["name"]
-        end
-    end
-        new_array.uniq
-  end
-  
   def welcome 
     puts "Welcome to Movie Show Times! Lets find a showtime in your area."
   end
@@ -32,6 +22,16 @@ class Movieshowtimes::CLI
       puts "Invalid Zip!  Please type again"
       showtimes_search
     end
+  end
+  
+    def display_theatre
+      new_array = []
+    Movieshowtimes::Showtimes.all.each do |h|
+        h.showtimes.map.with_index(1) do |t, index| 
+          new_array << t["theatre"]["name"]
+        end
+    end
+    puts new_array.uniq!
   end
   
   def display_movie_showtimes
