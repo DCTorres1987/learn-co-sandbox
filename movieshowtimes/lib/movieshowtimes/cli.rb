@@ -2,9 +2,19 @@ class Movieshowtimes::CLI
   def call 
       welcome
       showtimes_search
-      display_movie_showtimes
-      display_theater_listing
-      another_search
+      display_theatre
+      # display_movie_showtimes
+      # another_search
+  end
+  
+  def display_theatre
+    new_array = []
+    Movieshowtimes::Showtimes.all.each do |h|
+        h.showtimes.map.with_index(1) do |t, index| 
+          new_array << t["theatre"]["name"]
+        end
+    end
+        new_array.uniq
   end
   
   def welcome 
@@ -39,11 +49,7 @@ class Movieshowtimes::CLI
     puts "*****************************"
     puts "***********"
    
-    puts "Please choose a theater"
-    Movieshowtimes::Showtimes.display_theater_listing
-    theater = gets.chomp
-    
-    Movieshowtimes::Showtimes.display_theater_listing
+    Movieshowtimes::Showtimes.display_movie_showtimes
   end
   
   def another_search
