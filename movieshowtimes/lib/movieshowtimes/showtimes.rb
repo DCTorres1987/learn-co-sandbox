@@ -1,14 +1,15 @@
 class Movieshowtimes::Showtimes
-  attr_accessor :title, :description, :genres, :datetime, :ticketuri 
+  attr_accessor :title, :description, :genres, :datetime, :ticketuri, :theatre 
   
   @@all = []
   
-  def initialize(hash)
+  def initialize(title, description, genres, datetime, ticketuri, theatre)
     @title = title
     @description = description 
     @genres = genres 
-    @date_time = datetime 
+    @datetime = datetime 
     @ticketuri = ticketuri
+    @theatre = theatre
     @@all << self
   end
   

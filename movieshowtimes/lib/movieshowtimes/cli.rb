@@ -2,7 +2,7 @@ class Movieshowtimes::CLI
   def call 
       welcome
       showtimes_search
-      display_theatre
+      # display_theatre
       # display_movie_showtimes
       # another_search
   end
