@@ -1,10 +1,14 @@
 class Movieshowtimes::Showtimes
-  attr_accessor :tmsId, :rootId, :subType, :title, :releaseYear, :releaseDate, :titleLang, :descriptionLang, :entityType, :genres, :audience, :longDescription, :shortDescription, :topCast, :directors, :officialUrl, :qualityRating, :ratings, :advisories, :runTime, :animation, :preferredImage, :showtimes
+  attr_accessor :title, :description, :genres, :datetime, :ticketuri 
   
   @@all = []
   
   def initialize(hash)
-    hash.each {|k, v| self.send("#{k}=", v)}
+    @title = title
+    @description = description 
+    @genres = genres 
+    @date_time = datetime 
+    @ticketuri = ticketuri
     @@all << self
   end
   
