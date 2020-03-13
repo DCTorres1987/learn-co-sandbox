@@ -1,23 +1,37 @@
 class Movieshowtimes::Theatre 
   
-  attr_accessor :theatre, :zip 
+  attr_accessor :theatre
   
   @@all = []
   
-  def initialize(theatre,zip)
+  def initialize(theatre)
     @theatre = theatre 
-    @zip = zip
-    @@all << self 
-    binding.pry
   end 
   
   def self.all 
     @@all
   end 
   
-    def display_theatres
-      
+  def save 
+    @@all << self 
+  end
+  
+  def self.create(theatre)
+    theatre = self.new(theatre)
+    theatre.save
+    theatre
+  end
+  
+  def self.find_by_name(theatre)
+    @@all.detect do |name|
+      name.theatre == theatre
     end
+  end
+  
+  def self.find_or_create_by_name(theatre)
+      self.find_by_name(theatre) || self.create(theatre)
+  end
+  
   
   def self.destroy_all
     @@all.clear 

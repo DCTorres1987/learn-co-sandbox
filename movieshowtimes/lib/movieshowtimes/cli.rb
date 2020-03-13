@@ -1,8 +1,10 @@
 class Movieshowtimes::CLI 
+  
+  
   def call 
       welcome
       showtimes_search
-      # display_theatre
+      display_theatre
       # display_movie_showtimes
       # another_search
   end
@@ -25,13 +27,8 @@ class Movieshowtimes::CLI
   end
   
     def display_theatre
-      new_array = []
-    Movieshowtimes::Showtimes.all.each do |h|
-        h.showtimes.map.with_index(1) do |t, index| 
-          new_array << t["theatre"]["name"]
-        end
-    end
-    puts new_array.uniq!
+      Movieshowtimes::Theatre.all
+      binding.pry
   end
   
   def display_movie_showtimes
@@ -71,6 +68,7 @@ class Movieshowtimes::CLI
     
   def goodbye 
     Movieshowtimes::Showtimes.destroy_all
+    Movieshowtimes::Theatre.destroy_all
     puts "Goodbye, and thanks for using our service!"
   end
 end
