@@ -4,8 +4,9 @@ class Movieshowtimes::CLI
   def call 
       welcome
       showtimes_search
+      display_movie_showtimes
       display_theatre
-      # display_movie_showtimes
+      more_options
       # another_search
   end
   
@@ -26,11 +27,6 @@ class Movieshowtimes::CLI
     end
   end
   
-    def display_theatre
-      Movieshowtimes::Theatre.all
-      binding.pry
-  end
-  
   def display_movie_showtimes
     puts "                                                               "
     puts  "        d8b".colorize(:red)                                   
@@ -46,8 +42,25 @@ class Movieshowtimes::CLI
     puts "*****************************"
     puts "***********"
    
-    Movieshowtimes::Showtimes.display_movie_showtimes
   end
+  
+  def display_theatre
+      puts "Here is a listing of your local theatre."
+      Movieshowtimes::Theatre.all.each.with_index(1) do |name, index|
+        puts "#{index}. " + name.theatre   
+      end 
+      puts "************************************"
+  end
+  
+  def more_options
+    puts "Please enter the number associated with theatre for movie listings."
+    input = gets.chomp.to_i
+    index = input - 1
+    user_choice = Movieshowtimes::Showtimes.all[index]
+    puts "Showtimes: "
+    puts "***************************************************"
+    puts user_choice.title
+  end  
   
   def another_search
     puts "Would you like to search another location for showtimes?"
