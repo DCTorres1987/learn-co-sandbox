@@ -7,12 +7,15 @@ class Movieshowtimes::CLI
       display_movie_showtimes
       display_theatre
       movie_options
+      movie_search
   end
   
+  #1
   def welcome 
     puts "Welcome to Movie Show Times! Lets find a showtime in your area."
   end
   
+  #2
   def showtimes_search
     puts "Please enter a 5-digit zipcode."
     zip = gets.chomp
@@ -26,6 +29,7 @@ class Movieshowtimes::CLI
     end
   end
   
+  #3
   def display_movie_showtimes
     puts "                                                               "
     puts  "        d8b".colorize(:red)                                   
@@ -43,6 +47,7 @@ class Movieshowtimes::CLI
    
   end
   
+  #4
   def display_theatre
       puts "Here is a listing of your local theatre."
       Movieshowtimes::Theatre.all.each.with_index(1) do |name, index|
@@ -51,6 +56,7 @@ class Movieshowtimes::CLI
       puts "************************************"
   end
   
+  #5
   def movie_options
     puts "Please enter the number associated with theatre for movie listings."
     input_1 = gets.chomp.to_i
@@ -71,18 +77,65 @@ class Movieshowtimes::CLI
     index_2 = input_2 - 1
     user_choice_2 = Movieshowtimes::Showtimes.all_movies[index_2]
     Movieshowtimes::Showtimes.showtime_listings(user_choice_1,user_choice_2)
-  end  
+  end
+  
+  #6
+  def movie_search
+    puts "                                                  "
+    puts "                                                  "
+    puts "Would you like to see showtimes for another movie?"
+    
+    input = gets.chomp 
+    
+    if input == "yes"
+      additional_movie_search
+      
+    elsif input == "no"
+      puts "Would you like to choose a different theater?"
+      another_search
+      
+    else 
+      puts "Invalid Answer."
+      movie_search
+      
+    end 
+  end
+  
+  #7
+  def additional_movie_search
+    
+    input_1 = gets.chomp.to_i
+    index_1 = input_1 - 1
+    puts "Movie Listing: "
+    puts "***************************************************"
+    user_choice_1 = Movieshowtimes::Theatre.all[index_1]
+    Movieshowtimes::Showtimes.movie_listings(user_choice_1)
+    
+    Movieshowtimes::Showtimes.all_movies.each.with_index(1) do |name, index|
+     puts "#{index}. " + name
+    end
+    
+    puts "                                                                                       "
+    puts "If you would like to see showtimes, please enter the number associated with that movie."
+    
+    input_2 = gets.chomp.to_i
+    index_2 = input_2 - 1
+    user_choice_2 = Movieshowtimes::Showtimes.all_movies[index_2]
+    Movieshowtimes::Showtimes.showtime_listings(user_choice_1,user_choice_2)
+    movie_search
+  end
   
   def another_search
-    puts "Would you like to search another location for showtimes?"
-    puts "Please input 'yes' or 'no'."
     choice = gets.chomp
     
       if choice == "yes"
         
         showtimes_search
         display_movie_showtimes
+        display_theatre
         another_search
+        movie_options
+        movie_search
       elsif choice == "no"
         goodbye
       else
