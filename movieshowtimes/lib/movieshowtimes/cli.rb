@@ -58,8 +58,7 @@ class Movieshowtimes::CLI
     index = input - 1
     puts "Showtimes: "
     puts "***************************************************"
-    user_choice = Movieshowtimes::Showtimes.all[index]
-    binding.pry
+    user_choice = Movieshowtimes::Theatre.all[index]
   end  
   
   def another_search

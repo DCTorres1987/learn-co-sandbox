@@ -17,6 +17,12 @@ class Movieshowtimes::Showtimes
     @@all
   end
   
+   def self.find_by_name(theatre)
+    @@all.detect do |name|
+      name.theatre == theatre
+    end
+  end
+  
 
   def self.destroy_all
     @@all.clear
