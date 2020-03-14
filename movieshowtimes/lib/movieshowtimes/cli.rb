@@ -56,7 +56,7 @@ class Movieshowtimes::CLI
     puts "Please enter the number associated with theatre for movie listings."
     input = gets.chomp.to_i
     index = input - 1
-    puts "Showtimes: "
+    puts "Movie Listing: "
     puts "***************************************************"
     user_choice = Movieshowtimes::Theatre.all[index]
     Movieshowtimes::Showtimes.movie_listings(user_choice)

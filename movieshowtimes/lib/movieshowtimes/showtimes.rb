@@ -28,7 +28,7 @@ class Movieshowtimes::Showtimes
         end 
      end 
    end 
-   
+   puts "If you would like to see showtimes, please enter the number associated with that movie."
    movies.each.with_index(1) do |name, index|
    puts "#{index}. " + name
    end
