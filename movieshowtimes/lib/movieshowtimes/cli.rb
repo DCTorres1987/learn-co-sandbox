@@ -103,7 +103,6 @@ class Movieshowtimes::CLI
   
   #7
   def additional_movie_search
-    
     input_1 = gets.chomp.to_i
     index_1 = input_1 - 1
     puts "Movie Listing: "
@@ -129,7 +128,6 @@ class Movieshowtimes::CLI
     choice = gets.chomp
     
       if choice == "yes"
-        
         showtimes_search
         display_movie_showtimes
         display_theatre
