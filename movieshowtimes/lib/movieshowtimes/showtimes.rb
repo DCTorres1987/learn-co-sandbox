@@ -19,7 +19,7 @@ class Movieshowtimes::Showtimes
   
    def self.find_by_name(theatre)
     @@all.detect do |name|
-      name.theatre == theatre
+      binding.pry
     end
   end
   

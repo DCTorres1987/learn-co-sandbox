@@ -59,6 +59,7 @@ class Movieshowtimes::CLI
     puts "Showtimes: "
     puts "***************************************************"
     user_choice = Movieshowtimes::Theatre.all[index]
+    Movieshowtimes::Showtimes.
   end  
   
   def another_search
