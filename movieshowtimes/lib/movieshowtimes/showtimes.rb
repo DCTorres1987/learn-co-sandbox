@@ -18,7 +18,13 @@ class Movieshowtimes::Showtimes
   end
   
    def self.find_by_name(theatre)
-    @@all.detect do |name|
+    @@all.detect do |s|
+      puts "Movie:       #{s.title}"
+      puts "Genres:      #{s.genres}"
+      puts "Description: #{s.description}"
+      puts "-----------------------------"
+      puts "Date Time:   #{s.datetime.split("T")}"
+      puts "Ticket URI:  #{s.ticketuri}"
       binding.pry
     end
   end
