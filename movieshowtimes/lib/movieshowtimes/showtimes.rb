@@ -10,23 +10,21 @@ class Movieshowtimes::Showtimes
     @datetime = datetime 
     @ticketuri = ticketuri
     @theatre = theatre
-    @@all << self
   end
   
   def self.all
     @@all
   end
   
-   def self.find_by_name(theatre)
-    @@all.detect do |s|
-      puts "Movie:       #{s.title}"
-      puts "Genres:      #{s.genres}"
-      puts "Description: #{s.description}"
-      puts "-----------------------------"
-      puts "Date Time:   #{s.datetime.split("T")}"
-      puts "Ticket URI:  #{s.ticketuri}"
-      binding.pry
-    end
+  
+   def self.movie_listing(theatre)
+     puts "Here are your Movie listings. Please choose a movie for Showtimes"
+     puts "-----------------------------------------------------------------"
+     @@all.each do |s|
+      if s.theatre == theatre 
+         puts s.title 
+      end 
+     end 
   end
   
 
