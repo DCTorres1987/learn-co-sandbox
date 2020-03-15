@@ -83,7 +83,7 @@ class Movieshowtimes::CLI
   def movie_search
     puts "                                                  "
     puts "                                                  "
-    puts "Would you like to see showtimes for another movie?"
+    puts "Would you like to see showtimes for another movie?. Please type 'yes' or 'no'."
     
     input = gets.chomp 
     
@@ -91,7 +91,7 @@ class Movieshowtimes::CLI
       additional_movie_search
       
     elsif input == "no"
-      puts "Would you like to choose a different theater?"
+      puts "Would you like to choose a different theater? Please type 'yes' or 'no'."
       another_search
       
     else 
@@ -131,13 +131,12 @@ class Movieshowtimes::CLI
         showtimes_search
         display_movie_showtimes
         display_theatre
-        another_search
         movie_options
         movie_search
-      elsif choice == "no"
+        another_search
+        
+      else choice == "no"
         goodbye
-      else
-        puts "I'm sorry, that is not a valid choice."
       end
   end
     
@@ -145,5 +144,6 @@ class Movieshowtimes::CLI
     Movieshowtimes::Showtimes.destroy_all
     Movieshowtimes::Theatre.destroy_all
     puts "Goodbye, and thanks for using our service!"
+    display_movie_showtimes
   end
 end
