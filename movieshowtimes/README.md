@@ -4,6 +4,9 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 
 TODO: Delete this and the text above, and describe your gem
 
+# Description 
+This CLI will allow you to search and choose Theatres in your local area to see movie listings and showtimes. 
+
 ## Installation
 
 Add this line to your application's Gemfile:
