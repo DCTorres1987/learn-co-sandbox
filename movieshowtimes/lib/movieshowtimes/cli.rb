@@ -104,11 +104,8 @@ class Movieshowtimes::CLI
   
   #7
   def additional_movie_search
-    # input_1 = gets.chomp.to_i
-    # index_1 = input_1 - 1
     puts "Movie Listing: "
     puts "***************************************************"
-    # user_choice_1 = Movieshowtimes::Theatre.all[index_1]
     Movieshowtimes::Showtimes.movie_listings(user_choice_1)
     
     Movieshowtimes::Showtimes.all_movies.each.with_index(1) do |name, index|
@@ -136,8 +133,13 @@ class Movieshowtimes::CLI
         movie_search
         another_search
         
-      else choice == "no"
+      elsif choice == "no"
         goodbye
+        
+      else 
+        puts "Invalid Anwser."
+        puts "Would you like to choose a different theater? Please type 'yes' or 'no'."
+        another_search
       end
   end
     
@@ -145,6 +147,5 @@ class Movieshowtimes::CLI
     Movieshowtimes::Showtimes.destroy_all
     Movieshowtimes::Theatre.destroy_all
     puts "Goodbye, and thanks for using our service!"
-    display_movie_showtimes
   end
 end
