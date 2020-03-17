@@ -91,14 +91,10 @@ class Movieshowtimes::CLI
     if input == "yes"
       additional_movie_search
       
-    elsif input == "no"
+    else input == "no"
       puts "Would you like to choose a different theater? Please type 'yes' or 'no'."
       another_search
-      
-    else 
-      puts "Invalid Answer."
-      movie_search
-      
+
     end 
   end
   
@@ -131,15 +127,9 @@ class Movieshowtimes::CLI
         display_theatre
         movie_options
         movie_search
-        another_search
         
-      elsif choice == "no"
+      else choice == "no"
         goodbye
-        
-      else 
-        puts "Invalid Anwser."
-        puts "Would you like to choose a different theater? Please type 'yes' or 'no'."
-        another_search
       end
   end
     
