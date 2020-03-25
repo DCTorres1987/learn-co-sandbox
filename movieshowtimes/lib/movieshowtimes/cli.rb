@@ -1,7 +1,5 @@
 class Movieshowtimes::CLI 
   
-  attr_accessor :user_choice_1
-  
   def call 
       welcome
       showtimes_search
@@ -64,7 +62,7 @@ class Movieshowtimes::CLI
     index_1 = input_1 - 1
     puts "Movie Listing: "
     puts "***************************************************"
-    @user_choice_1 = Movieshowtimes::Theatre.all[index_1]
+    user_choice_1 = Movieshowtimes::Theatre.all[index_1]
     Movieshowtimes::Showtimes.movie_listings(user_choice_1)
     
     Movieshowtimes::Showtimes.all_movies.each.with_index(1) do |name, index|
@@ -77,7 +75,11 @@ class Movieshowtimes::CLI
     input_2 = gets.chomp.to_i
     index_2 = input_2 - 1
     user_choice_2 = Movieshowtimes::Showtimes.all_movies[index_2]
-    Movieshowtimes::Showtimes.showtime_listings(user_choice_1,user_choice_2)
+    showtimes = Movieshowtimes::Showtimes.showtime_listings(user_choice_1,user_choice_2)
+    showtimes.each do |s|
+    puts "Date/Time: #{s.datetime.split("T")}"
+    puts "TicketURI: #{s.ticketuri}"
+    end
   end
   
   #6

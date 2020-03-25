@@ -35,13 +35,8 @@ class Movieshowtimes::Showtimes
   end
    
    def self.showtime_listings(theatre,movie)
-     self.all.each do |s|
-       if s.theatre == theatre && s.title == movie 
-         puts "Date/Time: #{s.datetime.split("T")}"
-         puts "TicketURI: #{s.ticketuri}"
-       else 
-         nil
-       end
+     self.all.select do |s|
+       s.theatre == theatre && s.title == movie 
      end
   end
 
